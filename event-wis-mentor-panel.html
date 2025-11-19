@@ -1,0 +1,63 @@
+<!--
+ *------------------------------------------------------------------------------
+ * COMP 3020 HCI - UMSU Clubs Website
+ * NAME: Women in STEM Mentor Panel Event Detail Page
+ * COURSE: Human-Computer Interaction
+ * AUTHORS: 
+ *   - Patrick Kotelko
+ *   - Harshvardhan Gadhavi
+ *   - Chimdi Iwuchukwu
+ *   - Gurwinder Khandal
+ *   - Seth Morris
+ * GROUP: Group-5
+ *------------------------------------------------------------------------------
+ *
+ * Description:
+ * Event detail page for Women in STEM Mentor Panel. Displays full event information
+ * with "Add to My Upcoming Events" functionality. Uses data attributes
+ * to store event metadata for localStorage persistence.
+ *------------------------------------------------------------------------------ -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Document metadata and character encoding -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Women in STEM Mentor Panel | UMSU</title>
+    <meta name="description" content="Mentor Panel – hear from industry mentors and ask questions." />
+    <link rel="icon" href="assets/img/logo.svg" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <main id="main" class="section">
+      <div class="container">
+        <section class="event-detail card" id="eventData" data-id="event-wis-mentor-panel" data-title="Women in STEM Mentor Panel" data-datetime="Wed 20 Nov • 17:00–19:00" data-location="Auditorium" data-club="Women in STEM" data-club-url="club-women-in-stem.html">
+          <div class="event-main">
+            <h1>Women in STEM Mentor Panel</h1>
+            <p class="meta">Wed 20 Nov • 17:00–19:00 • Auditorium</p>
+            <p>Hear from industry mentors about navigating careers in STEM. Q&A to follow.</p>
+            <div class="event-actions">
+              <button class="btn btn-primary" id="btnSaveEvent">Add to My Upcoming Events</button>
+              <a class="btn" id="btnMoreClub" href="club-women-in-stem.html">More info on the club</a>
+            </div>
+            <div class="notice" id="saveNotice" hidden>Saved. Find it under “My Upcoming Events”.</div>
+            <h2>Contact</h2>
+            <p class="meta">Email: <a href="mailto:womeninstem@umsu.ca">womeninstem@umsu.ca</a></p>
+          </div>
+          <aside class="event-media">
+            <div class="event-graphic" aria-hidden="true"><span>🧪</span></div>
+          </aside>
+        </section>
+        <div class="nav-buttons">
+          <a class="btn" href="calendar.html">Back to Calendar</a>
+          <a class="btn" href="events.html">Back to Events</a>
+        </div>
+      </div>
+    </main>
+    <script src="assets/js/layout.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/events.js"></script>
+  </body>
+  </html>
+

@@ -1,0 +1,118 @@
+<!--
+ *------------------------------------------------------------------------------
+ * COMP 3020 HCI - UMSU Clubs Website
+ * NAME: Clubs Page
+ * COURSE: Human-Computer Interaction
+ * AUTHORS: 
+ *   - Patrick Kotelko
+ *   - Harshvardhan Gadhavi
+ *   - Chimdi Iwuchukwu
+ *   - Gurwinder Khandal
+ *   - Seth Morris
+ * GROUP: Group-5
+ *------------------------------------------------------------------------------
+ *
+ * Description:
+ * Clubs listing page with filtering capabilities. Displays all UMSU clubs
+ * with category-based styling. Features search and category filtering.
+ * Entire club cards are clickable for navigation to club detail pages.
+ *------------------------------------------------------------------------------ -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Document metadata and character encoding -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Clubs | UMSU</title>
+    <meta name="description" content="Browse all UMSU student clubs and find your community." />
+    <link rel="icon" href="assets/img/logo.svg" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <main id="main" class="section">
+      <div class="container">
+        <h1>UMSU Clubs</h1>
+        <p>Use search and filters to quickly find clubs.</p>
+
+        <!-- Club filtering form - filters clubs by search term and category -->
+        <form class="filters" id="filters" onsubmit="return false;" aria-label="Club filters">
+          <!-- Search filter - searches club names and descriptions -->
+          <label>
+            <span class="label">Search</span>
+            <input type="search" id="search" placeholder="Search by name or description" />
+          </label>
+          <!-- Category filter - filter by club category -->
+          <label>
+            <span class="label">Category</span>
+            <select id="category">
+              <option value="">All categories</option>
+              <option>Academic</option>
+              <option>Arts</option>
+              <option>Technology</option>
+              <option>Sports & Rec</option>
+              <option>Cultural</option>
+              <option>Service</option>
+            </select>
+          </label>
+        </form>
+
+        <noscript>
+          <p><strong>Note:</strong> JavaScript is disabled; showing all clubs.</p>
+        </noscript>
+
+        <!-- Clubs grid container - filtered by clubs.js -->
+        <div class="grid cards" id="clubGrid">
+          <!-- Club cards with data attributes for filtering -->
+          <!-- data-name: Club name for search filtering -->
+          <!-- data-category: Club category for filtering and color coding -->
+          <article class="card" data-name="Art Society" data-category="Arts">
+            <h3><span class="club-icon" aria-hidden="true">🎨</span>Art Society</h3>
+            <p>Workshops, exhibitions, and creative collabs.</p>
+            <p class="meta">Category: Arts</p>
+            <a class="card-link" href="club-art-society.html">View club</a>
+          </article>
+          <article class="card" data-name="Cultural Exchange" data-category="Cultural">
+            <h3><span class="club-icon" aria-hidden="true">🌍</span>Cultural Exchange</h3>
+            <p>Celebrate cultures with events and food.</p>
+            <p class="meta">Category: Cultural</p>
+            <a class="card-link" href="club-cultural-exchange.html">View club</a>
+          </article>
+          <article class="card" data-name="Dance Club" data-category="Arts">
+            <h3><span class="club-icon" aria-hidden="true">💃</span>Dance Club</h3>
+            <p>Social dance classes and Friday socials.</p>
+            <p class="meta">Category: Arts</p>
+            <a class="card-link" href="club-dance-club.html">View club</a>
+          </article>
+          <article class="card" data-name="Outdoor Rec" data-category="Sports & Rec">
+            <h3><span class="club-icon" aria-hidden="true">🥾</span>Outdoor Rec</h3>
+            <p>Hiking, climbing, camping, and adventure trips.</p>
+            <p class="meta">Category: Sports & Rec</p>
+            <a class="card-link" href="club-outdoor-rec.html">View club</a>
+          </article>
+          <article class="card" data-name="Robotics Club" data-category="Technology">
+            <h3><span class="club-icon" aria-hidden="true">🤖</span>Robotics Club</h3>
+            <p>Hands-on builds, competitions, and mentorship.</p>
+            <p class="meta">Category: Technology</p>
+            <a class="card-link" href="club-robotics-club.html">View club</a>
+          </article>
+          <article class="card" data-name="Volunteers United" data-category="Service">
+            <h3><span class="club-icon" aria-hidden="true">🤝</span>Volunteers United</h3>
+            <p>Community service and fundraising.</p>
+            <p class="meta">Category: Service</p>
+            <a class="card-link" href="club-volunteers-united.html">View club</a>
+          </article>
+          <article class="card" data-name="Women in STEM" data-category="Academic">
+            <h3><span class="club-icon" aria-hidden="true">🧪</span>Women in STEM</h3>
+            <p>Mentorship, talks, and career support.</p>
+            <p class="meta">Category: Academic</p>
+            <a class="card-link" href="club-women-in-stem.html">View club</a>
+          </article>
+        </div>
+      </div>
+    </main>
+    <script src="assets/js/layout.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/clubs.js"></script>
+  </body>
+  </html>

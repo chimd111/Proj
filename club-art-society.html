@@ -1,0 +1,55 @@
+<!--
+ *------------------------------------------------------------------------------
+ * COMP 3020 HCI - UMSU Clubs Website
+ * NAME: Art Society Club Detail Page
+ * COURSE: Human-Computer Interaction
+ * AUTHORS: 
+ *   - Patrick Kotelko
+ *   - Harshvardhan Gadhavi
+ *   - Chimdi Iwuchukwu
+ *   - Gurwinder Khandal
+ *   - Seth Morris
+ * GROUP: Group-5
+ *------------------------------------------------------------------------------
+ *
+ * Description:
+ * Club detail page for Art Society. Displays club information and upcoming
+ * events. Event tiles are dynamically enhanced with tearaway calendars and
+ * club icons, and are clickable for navigation to event detail pages.
+ *------------------------------------------------------------------------------ -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Document metadata and character encoding -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Art Society | UMSU</title>
+    <meta name="description" content="UMSU Art Society – workshops, exhibitions, and creative collabs." />
+    <link rel="icon" href="assets/img/logo.svg" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <main id="main" class="section">
+      <div class="container">
+        <h1><span class="club-icon" aria-hidden="true">🎨</span>Art Society</h1>
+        <p class="meta">Category: Arts</p>
+        <p>Workshops, exhibitions, and creative collaborations for artists of all levels.</p>
+
+        <!-- Upcoming events section - displays club's upcoming events -->
+        <h2 id="events">Upcoming events</h2>
+        <!-- Events list - dynamically enhanced by events.js with tearaway calendars and icons -->
+        <div class="list events">
+          <article class="event" data-category="Arts" data-club="Art Society" data-date="2024-11-05" data-title="Art Jam">
+            <h3><a href="event-art-jam.html">Art Jam</a></h3>
+            <p class="meta">Tue 5 Nov • 15:00–17:00 • Art Studio</p>
+            <p>Casual create-together session. Bring your own materials or use ours.</p>
+          </article>
+        </div>
+      </div>
+    </main>
+    <script src="assets/js/layout.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/events.js"></script>
+  </body>
+  </html>

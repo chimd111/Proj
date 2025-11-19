@@ -1,0 +1,58 @@
+<!--
+ *------------------------------------------------------------------------------
+ * COMP 3020 HCI - UMSU Clubs Website
+ * NAME: Robotics Club Detail Page
+ * COURSE: Human-Computer Interaction
+ * AUTHORS: 
+ *   - Patrick Kotelko
+ *   - Harshvardhan Gadhavi
+ *   - Chimdi Iwuchukwu
+ *   - Gurwinder Khandal
+ *   - Seth Morris
+ * GROUP: Group-5
+ *------------------------------------------------------------------------------
+ *
+ * Description:
+ * Club detail page for Robotics Club. Displays club information and upcoming
+ * events. Event tiles are dynamically enhanced with tearaway calendars and
+ * club icons, and are clickable for navigation to event detail pages.
+ *------------------------------------------------------------------------------ -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Document metadata and character encoding -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Robotics Club | UMSU</title>
+    <meta name="description" content="UMSU Robotics Club – hands-on builds, competitions, and mentorship." />
+    <link rel="icon" href="assets/img/logo.svg" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <main id="main" class="section">
+      <div class="container">
+        <h1><span class="club-icon" aria-hidden="true">🤖</span>Robotics Club</h1>
+        <p class="meta">Category: Technology</p>
+        <p>Hands-on builds, competitions, and mentorship. All experience levels welcome.</p>
+
+        <h2 id="events">Upcoming events</h2>
+        <div class="list events">
+          <article class="event" data-category="Technology" data-club="Robotics Club" data-date="2024-11-08" data-title="Robotics Workshop">
+            <h3><a href="event-robotics-workshop.html">Robotics Workshop</a></h3>
+            <p class="meta">Fri 8 Nov • 16:00–18:00 • Makerspace</p>
+            <p>Hands-on intro to microcontrollers and sensors.</p>
+          </article>
+          <article class="event" data-category="Technology" data-club="Robotics Club" data-date="2024-11-22" data-title="Hack Night">
+            <h3><a href="event-hack-night.html">Hack Night</a></h3>
+            <p class="meta">Fri 22 Nov • 18:00–21:00 • Makerspace</p>
+            <p>Bring a project; mentors on site.</p>
+          </article>
+        </div>
+      </div>
+    </main>
+    <script src="assets/js/layout.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/events.js"></script>
+  </body>
+  </html>

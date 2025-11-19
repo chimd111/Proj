@@ -1,0 +1,54 @@
+<!--
+ *------------------------------------------------------------------------------
+ * COMP 3020 HCI - UMSU Clubs Website
+ * NAME: Women in STEM Club Detail Page
+ * COURSE: Human-Computer Interaction
+ * AUTHORS: 
+ *   - Patrick Kotelko
+ *   - Harshvardhan Gadhavi
+ *   - Chimdi Iwuchukwu
+ *   - Gurwinder Khandal
+ *   - Seth Morris
+ * GROUP: Group-5
+ *------------------------------------------------------------------------------
+ *
+ * Description:
+ * Club detail page for Women in STEM. Displays club information and upcoming
+ * events. Event tiles are dynamically enhanced with tearaway calendars and
+ * club icons, and are clickable for navigation to event detail pages.
+ *------------------------------------------------------------------------------ -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Document metadata and character encoding -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Women in STEM | UMSU</title>
+    <meta name="description" content="UMSU Women in STEM – mentorship, talks, and career support." />
+    <link rel="icon" href="assets/img/logo.svg" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <main id="main" class="section">
+      <div class="container">
+        <h1><span class="club-icon" aria-hidden="true">🧪</span>Women in STEM</h1>
+        <p class="meta">Category: Academic</p>
+        <p>We support women and non-binary students in STEM through mentorship, talks, study groups, and networking.</p>
+
+        <h2 id="events">Upcoming events</h2>
+        <div class="list events">
+          <article class="event" data-category="Academic" data-club="Women in STEM" data-date="2024-11-20" data-title="Women in STEM Mentor Panel">
+            <h3><a href="event-wis-mentor-panel.html">Women in STEM Mentor Panel</a></h3>
+            <p class="meta">Wed 20 Nov • 17:00–19:00 • Auditorium</p>
+            <p>Hear from industry mentors and ask questions.</p>
+          </article>
+        </div>
+      </div>
+    </main>
+    <script src="assets/js/layout.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/events.js"></script>
+  </body>
+  </html>
+

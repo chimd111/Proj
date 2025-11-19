@@ -1,0 +1,62 @@
+<!--
+ *------------------------------------------------------------------------------
+ * COMP 3020 HCI - UMSU Clubs Website
+ * NAME: Outdoor Rec Day Hike Event Detail Page
+ * COURSE: Human-Computer Interaction
+ * AUTHORS: 
+ *   - Patrick Kotelko
+ *   - Harshvardhan Gadhavi
+ *   - Chimdi Iwuchukwu
+ *   - Gurwinder Khandal
+ *   - Seth Morris
+ * GROUP: Group-5
+ *------------------------------------------------------------------------------
+ *
+ * Description:
+ * Event detail page for Outdoor Rec Day Hike. Displays full event information
+ * with "Add to My Upcoming Events" functionality. Uses data attributes
+ * to store event metadata for localStorage persistence.
+ *------------------------------------------------------------------------------ -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Document metadata and character encoding -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Outdoor Rec: Day Hike | UMSU</title>
+    <meta name="description" content="Outdoor Rec: Day Hike – beginner-friendly hike with the club." />
+    <link rel="icon" href="assets/img/logo.svg" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <main id="main" class="section">
+      <div class="container">
+        <section class="event-detail card" id="eventData" data-id="event-outdoor-rec-day-hike" data-title="Outdoor Rec: Day Hike" data-datetime="Sun 24 Nov • 08:00–17:00" data-location="Trailhead" data-club="Outdoor Rec" data-club-url="club-outdoor-rec.html">
+          <div class="event-main">
+            <h1>Outdoor Rec: Day Hike</h1>
+            <p class="meta">Sun 24 Nov • 08:00–17:00 • Trailhead</p>
+            <p>Beginner-friendly hike with Outdoor Rec. Limited spots; bring water, snacks, and comfortable footwear.</p>
+            <div class="event-actions">
+              <button class="btn btn-primary" id="btnSaveEvent">Add to My Upcoming Events</button>
+              <a class="btn" id="btnMoreClub" href="club-outdoor-rec.html">More info on the club</a>
+            </div>
+            <div class="notice" id="saveNotice" hidden>Saved. Find it under “My Upcoming Events”.</div>
+            <h2>Contact</h2>
+            <p class="meta">Email: <a href="mailto:outdoorrec@umsu.ca">outdoorrec@umsu.ca</a></p>
+          </div>
+          <aside class="event-media">
+            <div class="event-graphic" aria-hidden="true"><span>🥾</span></div>
+          </aside>
+        </section>
+        <div class="nav-buttons">
+          <a class="btn" href="calendar.html">Back to Calendar</a>
+          <a class="btn" href="events.html">Back to Events</a>
+        </div>
+      </div>
+    </main>
+    <script src="assets/js/layout.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/events.js"></script>
+  </body>
+  </html>

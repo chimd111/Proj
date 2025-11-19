@@ -1,0 +1,63 @@
+<!--
+ *------------------------------------------------------------------------------
+ * COMP 3020 HCI - UMSU Clubs Website
+ * NAME: Global Potluck Event Detail Page
+ * COURSE: Human-Computer Interaction
+ * AUTHORS: 
+ *   - Patrick Kotelko
+ *   - Harshvardhan Gadhavi
+ *   - Chimdi Iwuchukwu
+ *   - Gurwinder Khandal
+ *   - Seth Morris
+ * GROUP: Group-5
+ *------------------------------------------------------------------------------
+ *
+ * Description:
+ * Event detail page for Global Potluck. Displays full event information
+ * with "Add to My Upcoming Events" functionality. Uses data attributes
+ * to store event metadata for localStorage persistence.
+ *------------------------------------------------------------------------------ -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Document metadata and character encoding -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Global Potluck | UMSU</title>
+    <meta name="description" content="Global Potluck – share a dish from your culture and meet new friends." />
+    <link rel="icon" href="assets/img/logo.svg" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <main id="main" class="section">
+      <div class="container">
+        <section class="event-detail card" id="eventData" data-id="event-cultural-potluck" data-title="Global Potluck" data-datetime="Wed 6 Nov • 18:00–20:00" data-location="Union Hall" data-club="Cultural Exchange" data-club-url="club-cultural-exchange.html">
+          <div class="event-main">
+            <h1>Global Potluck</h1>
+            <p class="meta">Wed 6 Nov • 18:00–20:00 • Union Hall</p>
+            <p>Bring a dish from your culture or come to sample others! Meet new friends and share stories over food.</p>
+            <div class="event-actions">
+              <button class="btn btn-primary" id="btnSaveEvent">Add to My Upcoming Events</button>
+              <a class="btn" id="btnMoreClub" href="club-cultural-exchange.html">More info on the club</a>
+            </div>
+            <div class="notice" id="saveNotice" hidden>Saved. Find it under “My Upcoming Events”.</div>
+            <h2>Contact</h2>
+            <p class="meta">Email: <a href="mailto:culturalexchange@umsu.ca">culturalexchange@umsu.ca</a></p>
+          </div>
+          <aside class="event-media">
+            <div class="event-graphic" aria-hidden="true"><span>🌍</span></div>
+          </aside>
+        </section>
+        <div class="nav-buttons">
+          <a class="btn" href="calendar.html">Back to Calendar</a>
+          <a class="btn" href="events.html">Back to Events</a>
+        </div>
+      </div>
+    </main>
+    <script src="assets/js/layout.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/events.js"></script>
+  </body>
+  </html>
+

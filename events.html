@@ -1,0 +1,153 @@
+<!--
+ *------------------------------------------------------------------------------
+ * COMP 3020 HCI - UMSU Clubs Website
+ * NAME: Events Page
+ * COURSE: Human-Computer Interaction
+ * AUTHORS: 
+ *   - Patrick Kotelko
+ *   - Harshvardhan Gadhavi
+ *   - Chimdi Iwuchukwu
+ *   - Gurwinder Khandal
+ *   - Seth Morris
+ * GROUP: Group-5
+ *------------------------------------------------------------------------------
+ *
+ * Description:
+ * Events listing page with filtering capabilities. Displays all upcoming events
+ * with tearaway calendar icons and club icons. Features search, category, club,
+ * and date range filtering. Includes "My Upcoming Events" section showing
+ * user's saved events with add/remove functionality.
+ *------------------------------------------------------------------------------ -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Document metadata and character encoding -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Events | UMSU</title>
+    <meta name="description" content="Upcoming UMSU club events and activities." />
+    <link rel="icon" href="assets/img/logo.svg" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <main id="main" class="section">
+      <div class="container">
+        <h1>Events</h1>
+        <p>Explore upcoming events hosted by UMSU clubs.</p>
+
+        <!-- Event filtering form - all filters work together to show matching events -->
+        <form class="filters" id="eventFilters" onsubmit="return false;" aria-label="Event filters">
+          <!-- Search filter - searches event titles -->
+          <label>
+            <span class="label">Search</span>
+            <input type="search" id="eventSearch" placeholder="Search events" />
+          </label>
+          <!-- Category filter - filter by event category -->
+          <label>
+            <span class="label">Category</span>
+            <select id="eventCategory">
+              <option value="">All categories</option>
+              <option>Arts</option>
+              <option>Technology</option>
+              <option>Sports & Rec</option>
+              <option>General</option>
+              <option>Academic</option>
+              <option>Cultural</option>
+              <option>Service</option>
+            </select>
+          </label>
+          <!-- Club filter - filter by hosting club -->
+          <label>
+            <span class="label">Club</span>
+            <select id="eventClub">
+              <option value="">All clubs</option>
+              <option>Art Society</option>
+              <option>Robotics Club</option>
+              <option>Outdoor Rec</option>
+              <option>Dance Club</option>
+              <option>Cultural Exchange</option>
+              <option>Women in STEM</option>
+              <option>Volunteers United</option>
+              <option>UMSU Clubs</option>
+            </select>
+          </label>
+          <!-- Date range filters - placed on second row for better layout -->
+          <div class="filters-row-2">
+            <!-- From Date filter - shows events on or after selected date -->
+            <label>
+              <span class="label">From Date (show events from this date onwards)</span>
+              <input type="date" id="eventDateStart" />
+            </label>
+            <!-- To Date filter - shows events up to and including selected date -->
+            <label>
+              <span class="label">To Date (show events up to this date)</span>
+              <input type="date" id="eventDateEnd" />
+            </label>
+          </div>
+        </form>
+
+        <!-- Events list container - dynamically enhanced by events.js with icons and buttons -->
+        <div class="list events" id="eventsList">
+          <!-- Event articles with data attributes for filtering and categorization -->
+          <!-- data-category: Used for filtering and color coding -->
+          <!-- data-club: Hosting club name for filtering -->
+          <!-- data-date: Event date in YYYY-MM-DD format for date filtering and sorting -->
+          <!-- data-title: Event title for search filtering -->
+          <article class="event" data-category="General" data-club="UMSU Clubs" data-date="2024-11-05" data-title="Welcome Week Fair">
+            <h3><a href="event-welcome-week-fair.html">Welcome Week Fair</a></h3>
+            <p class="meta">Tue 5 Nov • 10:00–16:00 • Quad</p>
+            <p>Meet clubs, grab freebies, and sign up.</p>
+          </article>
+          <article class="event" data-category="Technology" data-club="Robotics Club" data-date="2024-11-22" data-title="Hack Night">
+            <h3><a href="event-hack-night.html">Hack Night</a></h3>
+            <p class="meta">Fri 22 Nov • 18:00–21:00 • Makerspace</p>
+            <p>Bring a project; mentors on site.</p>
+          </article>
+          <article class="event" data-category="Technology" data-club="Robotics Club" data-date="2024-11-08" data-title="Robotics Workshop">
+            <h3><a href="event-robotics-workshop.html">Robotics Workshop</a></h3>
+            <p class="meta">Fri 8 Nov • 16:00–18:00 • Makerspace</p>
+            <p>Hands-on intro to microcontrollers and sensors.</p>
+          </article>
+          <article class="event" data-category="Cultural" data-club="Cultural Exchange" data-date="2024-11-06" data-title="Global Potluck">
+            <h3><a href="event-cultural-potluck.html">Global Potluck</a></h3>
+            <p class="meta">Wed 6 Nov • 18:00–20:00 • Union Hall</p>
+            <p>Share a dish from your culture and meet new friends.</p>
+          </article>
+          <article class="event" data-category="Service" data-club="Volunteers United" data-date="2024-11-09" data-title="Charity Drive">
+            <h3><a href="event-charity-drive.html">Charity Drive</a></h3>
+            <p class="meta">Sat 9 Nov • 12:00–16:00 • Quad</p>
+            <p>Donate essentials and support local shelters.</p>
+          </article>
+          <article class="event" data-category="Arts" data-club="Dance Club" data-date="2024-11-23" data-title="Dance Night">
+            <h3><a href="event-dance-night.html">Dance Night</a></h3>
+            <p class="meta">Sat 23 Nov • 19:00–22:00 • Ballroom</p>
+            <p>Social dancing with lessons and open floor — all levels welcome.</p>
+          </article>
+          <article class="event" data-category="Sports & Rec" data-club="Outdoor Rec" data-date="2024-11-24" data-title="Outdoor Rec: Day Hike">
+            <h3><a href="event-outdoor-rec-day-hike.html">Outdoor Rec: Day Hike</a></h3>
+            <p class="meta">Sun 24 Nov • 08:00–17:00 • Trailhead</p>
+            <p>Beginner-friendly hike. Limited spots.</p>
+          </article>
+          <article class="event" data-category="Academic" data-club="Women in STEM" data-date="2024-11-20" data-title="Women in STEM Mentor Panel">
+            <h3><a href="event-wis-mentor-panel.html">Women in STEM Mentor Panel</a></h3>
+            <p class="meta">Wed 20 Nov • 17:00–19:00 • Auditorium</p>
+            <p>Hear from industry mentors and ask questions.</p>
+          </article>
+        </div>
+
+        <!-- My Upcoming Events section - displays user's saved events from localStorage -->
+        <section class="section" aria-labelledby="my-events-title">
+          <h2 id="my-events-title">My Upcoming Events</h2>
+          <!-- Container for dynamically rendered saved events (populated by events.js) -->
+          <div id="myEventsList" class="list events"></div>
+        </section>
+      </div>
+    </main>
+
+    <!-- JavaScript files for page functionality -->
+    <script src="assets/js/layout.js"></script>
+    <script src="assets/js/main.js"></script> <!-- Mobile nav toggle -->
+    <script src="assets/js/events.js"></script> <!-- Event filtering, rendering, and localStorage -->
+  </body>
+  </html>

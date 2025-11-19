@@ -1,0 +1,145 @@
+<!--
+ *------------------------------------------------------------------------------
+ * COMP 3020 HCI - UMSU Clubs Website
+ * NAME: Calendar Page
+ * COURSE: Human-Computer Interaction
+ * AUTHORS: 
+ *   - Patrick Kotelko
+ *   - Harshvardhan Gadhavi
+ *   - Chimdi Iwuchukwu
+ *   - Gurwinder Khandal
+ *   - Seth Morris
+ * GROUP: Group-5
+ *------------------------------------------------------------------------------
+ *
+ * Description:
+ * Monthly calendar view of UMSU club events. Displays November 2024 calendar
+ * grid with event pills color-coded by category. Features filtering by search,
+ * category, and club. Highlights user's saved events.
+ *------------------------------------------------------------------------------ -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Document metadata and character encoding -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Calendar | UMSU</title>
+    <meta name="description" content="Monthly view of UMSU club events." />
+    <link rel="icon" href="assets/img/logo.svg" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <main id="main" class="section">
+      <div class="container">
+        <div class="calendar-nav">
+          <h1 class="m-0">Calendar</h1>
+          <div class="calendar-nav-controls">
+            <button class="btn btn-compact" disabled>← Previous</button>
+            <span class="calendar-nav-month">November 2024</span>
+            <button class="btn btn-compact" disabled>Next →</button>
+          </div>
+        </div>
+        <p>Filter to show only the events you care about. Selecting filters hides non-matching events.</p>
+        <!-- Category color legend - shows color coding for event categories -->
+        <ul class="legend" aria-label="Event categories">
+          <li class="key"><span class="swatch swatch-arts"></span> Arts</li>
+          <li class="key"><span class="swatch swatch-technology"></span> Technology</li>
+          <li class="key"><span class="swatch swatch-sports"></span> Sports & Rec</li>
+          <li class="key"><span class="swatch swatch-general"></span> General</li>
+          <li class="key"><span class="swatch swatch-academic"></span> Academic</li>
+          <li class="key"><span class="swatch swatch-cultural"></span> Cultural</li>
+          <li class="key"><span class="swatch swatch-service"></span> Service</li>
+        </ul>
+
+        <!-- Calendar filtering form - filters event pills on the calendar -->
+        <form class="filters" id="calFilters" onsubmit="return false;" aria-label="Calendar filters">
+          <label>
+            <span class="label">Search</span>
+            <input type="search" id="calSearch" placeholder="Search events" />
+          </label>
+          <label>
+            <span class="label">Category</span>
+            <select id="calCategory">
+              <option value="">All categories</option>
+              <option>Arts</option>
+              <option>Technology</option>
+              <option>Sports & Rec</option>
+              <option>General</option>
+            </select>
+          </label>
+          <label>
+            <span class="label">Club</span>
+            <select id="calClub">
+              <option value="">All clubs</option>
+              <option>Art Society</option>
+              <option>Robotics Club</option>
+              <option>Outdoor Rec</option>
+              <option>Dance Club</option>
+              <option>UMSU Clubs</option>
+            </select>
+          </label>
+        </form>
+        <div class="calendar-grid" role="grid" aria-label="Month">
+          <div class="cal-head" role="row">
+            <div role="columnheader">Sun</div>
+            <div role="columnheader">Mon</div>
+            <div role="columnheader">Tue</div>
+            <div role="columnheader">Wed</div>
+            <div role="columnheader">Thu</div>
+            <div role="columnheader">Fri</div>
+            <div role="columnheader">Sat</div>
+          </div>
+          <div class="cal-row" role="row">
+            <div class="day muted" role="gridcell">27</div>
+            <div class="day muted" role="gridcell">28</div>
+            <div class="day muted" role="gridcell">29</div>
+            <div class="day muted" role="gridcell">30</div>
+            <div class="day muted" role="gridcell">31</div>
+            <div class="day" role="gridcell">1</div>
+            <div class="day" role="gridcell">2</div>
+          </div>
+          <div class="cal-row" role="row">
+            <div class="day" role="gridcell">3</div>
+            <div class="day" role="gridcell">4</div>
+            <div class="day has-event" role="gridcell">5<a class="pill" href="event-welcome-week-fair.html" data-title="Welcome Week Fair" data-category="General" data-club="UMSU Clubs">Fair</a></div>
+            <div class="day has-event" role="gridcell">6<a class="pill" href="event-cultural-potluck.html" data-title="Global Potluck" data-category="Cultural" data-club="Cultural Exchange">Potluck</a></div>
+            <div class="day" role="gridcell">7</div>
+            <div class="day has-event" role="gridcell">8<a class="pill" href="event-robotics-workshop.html" data-title="Robotics Workshop" data-category="Technology" data-club="Robotics Club">Workshop</a></div>
+            <div class="day has-event" role="gridcell">9<a class="pill" href="event-charity-drive.html" data-title="Charity Drive" data-category="Service" data-club="Volunteers United">Charity</a></div>
+          </div>
+          <div class="cal-row" role="row">
+            <div class="day" role="gridcell">10</div>
+            <div class="day" role="gridcell">11</div>
+            <div class="day" role="gridcell">12</div>
+            <div class="day" role="gridcell">13</div>
+            <div class="day has-event" role="gridcell">14<a class="pill" href="event-meetup.html" data-title="Community Meetup" data-category="General" data-club="UMSU Clubs">Meetup</a></div>
+            <div class="day" role="gridcell">15</div>
+            <div class="day" role="gridcell">16</div>
+          </div>
+          <div class="cal-row" role="row">
+            <div class="day" role="gridcell">17</div>
+            <div class="day" role="gridcell">18</div>
+            <div class="day" role="gridcell">19</div>
+            <div class="day has-event" role="gridcell">20<a class="pill" href="event-wis-mentor-panel.html" data-title="Women in STEM Mentor Panel" data-category="Academic" data-club="Women in STEM">Mentor</a></div>
+            <div class="day" role="gridcell">21</div>
+            <div class="day has-event" role="gridcell">22<a class="pill" href="event-hack-night.html" data-title="Hack Night" data-category="Technology" data-club="Robotics Club">Hack</a></div>
+            <div class="day has-event" role="gridcell">23<a class="pill" href="event-dance-night.html" data-title="Dance Night" data-category="Arts" data-club="Dance Club">Dance</a></div>
+          </div>
+          <div class="cal-row" role="row">
+            <div class="day has-event" role="gridcell">24<a class="pill" href="event-outdoor-rec-day-hike.html" data-title="Outdoor Rec: Day Hike" data-category="Sports & Rec" data-club="Outdoor Rec">Hike</a></div>
+            <div class="day" role="gridcell">25</div>
+            <div class="day" role="gridcell">26</div>
+            <div class="day" role="gridcell">27</div>
+            <div class="day" role="gridcell">28</div>
+            <div class="day" role="gridcell">29</div>
+            <div class="day" role="gridcell">30</div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="assets/js/layout.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/events.js"></script>
+  </body>
+  </html>

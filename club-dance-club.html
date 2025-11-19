@@ -1,0 +1,53 @@
+<!--
+ *------------------------------------------------------------------------------
+ * COMP 3020 HCI - UMSU Clubs Website
+ * NAME: Dance Club Detail Page
+ * COURSE: Human-Computer Interaction
+ * AUTHORS: 
+ *   - Patrick Kotelko
+ *   - Harshvardhan Gadhavi
+ *   - Chimdi Iwuchukwu
+ *   - Gurwinder Khandal
+ *   - Seth Morris
+ * GROUP: Group-5
+ *------------------------------------------------------------------------------
+ *
+ * Description:
+ * Club detail page for Dance Club. Displays club information and upcoming
+ * events. Event tiles are dynamically enhanced with tearaway calendars and
+ * club icons, and are clickable for navigation to event detail pages.
+ *------------------------------------------------------------------------------ -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Document metadata and character encoding -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dance Club | UMSU</title>
+    <meta name="description" content="UMSU Dance Club – social dance classes and Friday socials." />
+    <link rel="icon" href="assets/img/logo.svg" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <main id="main" class="section">
+      <div class="container">
+        <h1><span class="club-icon" aria-hidden="true">💃</span>Dance Club</h1>
+        <p class="meta">Category: Arts</p>
+        <p>We host weekly social dance classes and Friday night socials. All styles, all levels welcome.</p>
+
+        <h2 id="events">Upcoming events</h2>
+        <div class="list events">
+          <article class="event" data-category="Arts" data-club="Dance Club" data-date="2024-11-23" data-title="Dance Night">
+            <h3><a href="event-dance-night.html">Dance Night</a></h3>
+            <p class="meta">Sat 23 Nov • 19:00–22:00 • Ballroom</p>
+            <p>Social dancing with lessons and open floor — all levels welcome.</p>
+          </article>
+        </div>
+      </div>
+    </main>
+    <script src="assets/js/layout.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/events.js"></script>
+  </body>
+  </html>

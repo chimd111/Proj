@@ -1,0 +1,54 @@
+<!--
+ *------------------------------------------------------------------------------
+ * COMP 3020 HCI - UMSU Clubs Website
+ * NAME: Volunteers United Club Detail Page
+ * COURSE: Human-Computer Interaction
+ * AUTHORS: 
+ *   - Patrick Kotelko
+ *   - Harshvardhan Gadhavi
+ *   - Chimdi Iwuchukwu
+ *   - Gurwinder Khandal
+ *   - Seth Morris
+ * GROUP: Group-5
+ *------------------------------------------------------------------------------
+ *
+ * Description:
+ * Club detail page for Volunteers United. Displays club information and upcoming
+ * events. Event tiles are dynamically enhanced with tearaway calendars and
+ * club icons, and are clickable for navigation to event detail pages.
+ *------------------------------------------------------------------------------ -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Document metadata and character encoding -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Volunteers United | UMSU</title>
+    <meta name="description" content="UMSU Volunteers United – community service and fundraising." />
+    <link rel="icon" href="assets/img/logo.svg" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <main id="main" class="section">
+      <div class="container">
+        <h1><span class="club-icon" aria-hidden="true">🤝</span>Volunteers United</h1>
+        <p class="meta">Category: Service</p>
+        <p>We organize fundraising drives and community service projects both on and off campus.</p>
+
+        <h2 id="events">Upcoming events</h2>
+        <div class="list events">
+          <article class="event" data-category="Service" data-club="Volunteers United" data-date="2024-11-09" data-title="Charity Drive">
+            <h3><a href="event-charity-drive.html">Charity Drive</a></h3>
+            <p class="meta">Sat 9 Nov • 12:00–16:00 • Quad</p>
+            <p>Donate essentials and support local shelters.</p>
+          </article>
+        </div>
+      </div>
+    </main>
+    <script src="assets/js/layout.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/events.js"></script>
+  </body>
+  </html>
+

@@ -1,0 +1,67 @@
+<!--
+ *------------------------------------------------------------------------------
+ * COMP 3020 HCI - UMSU Clubs Website
+ * NAME: About Page
+ * COURSE: Human-Computer Interaction
+ * AUTHORS: 
+ *   - Patrick Kotelko
+ *   - Harshvardhan Gadhavi
+ *   - Chimdi Iwuchukwu
+ *   - Gurwinder Khandal
+ *   - Seth Morris
+ * GROUP: Group-5
+ *------------------------------------------------------------------------------
+ *
+ * Description:
+ * About page for UMSU Clubs website. Provides information about getting
+ * involved with clubs and displays a list of upcoming events from UMSU Clubs.
+ *------------------------------------------------------------------------------ -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Document metadata and character encoding -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About | UMSU</title>
+    <meta name="description" content="About UMSU Clubs and how to get involved." />
+    <link rel="icon" href="assets/img/logo.svg" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <main id="main" class="section">
+      <div class="container">
+        <h1>About UMSU Clubs</h1>
+        <p>UMSU supports student-led clubs that build community and enrich campus life.</p>
+        <h2>Get involved</h2>
+        <ul>
+          <li>Browse clubs and attend a meeting.</li>
+          <li>Start a new club with friends.</li>
+          <li>Host events and collaborate across groups.</li>
+        </ul>
+
+        <!-- Upcoming events section - displays UMSU Clubs events -->
+        <h2 id="events">Upcoming events</h2>
+        <!-- Events list - dynamically enhanced by events.js with icons -->
+        <div class="list events">
+          <article class="event" data-category="General" data-club="UMSU Clubs" data-date="2024-11-05" data-title="Welcome Week Fair">
+            <h3><a href="event-welcome-week-fair.html">Welcome Week Fair</a></h3>
+            <p class="meta">Tue 5 Nov • 10:00–16:00 • Quad</p>
+            <p>Meet clubs, grab freebies, and sign up.</p>
+          </article>
+          <article class="event" data-category="General" data-club="UMSU Clubs" data-date="2024-11-14" data-title="Community Meetup">
+            <h3><a href="event-meetup.html">Community Meetup</a></h3>
+            <p class="meta">Thu 14 Nov • 17:30–19:00 • Student Union Lounge</p>
+            <p>Meet members from multiple clubs, share ideas, and plan collaborations for the term.</p>
+          </article>
+        </div>
+        
+        <p class="meta about-group">Group-5</p>
+      </div>
+    </main>
+    <script src="assets/js/layout.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/events.js"></script>
+  </body>
+  </html>
+

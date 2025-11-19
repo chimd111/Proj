@@ -1,0 +1,138 @@
+<!--
+ *------------------------------------------------------------------------------
+ * COMP 3020 HCI - UMSU Clubs Website
+ * NAME: Main Page (Home)
+ * COURSE: Human-Computer Interaction
+ * AUTHORS: 
+ *   - Patrick Kotelko
+ *   - Harshvardhan Gadhavi
+ *   - Chimdi Iwuchukwu
+ *   - Gurwinder Khandal
+ *   - Seth Morris
+ * GROUP: Group-5
+ *------------------------------------------------------------------------------
+ *
+ * Description:
+ * Main landing page for the UMSU Clubs website. Displays a hero section,
+ * mini calendar showing the current month's events, and user's saved events.
+ *------------------------------------------------------------------------------ -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Document metadata and character encoding -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UMSU Clubs</title>
+    <meta name="description" content="Discover, join, and connect with UMSU student clubs." />
+    <link rel="icon" href="assets/img/logo.svg" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <!-- Main content area -->
+    <main id="main">
+      <!-- Hero section with primary call-to-action -->
+      <section class="hero">
+        <div class="container hero-inner">
+          <h1>Find your people. Join a club.</h1>
+          <p>Explore academic, cultural, arts, tech, service and sports clubs across UMSU.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="calendar.html">Open Calendar</a>
+            <a class="btn" href="clubs.html">Browse Clubs</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Overview section with calendar and saved events -->
+      <section class="section">
+        <div class="container">
+          <h2>Upcoming at a Glance</h2>
+          <div class="home-overview">
+            <!-- Mini calendar card showing current month (November 2024) - clickable to navigate to full calendar -->
+            <div class="card mini-calendar">
+              <h3 class="mt-0">This Month</h3>
+              <div class="calendar-grid" role="grid" aria-label="Month (mini)">
+                <div class="cal-head" role="row">
+                  <div role="columnheader">Sun</div>
+                  <div role="columnheader">Mon</div>
+                  <div role="columnheader">Tue</div>
+                  <div role="columnheader">Wed</div>
+                  <div role="columnheader">Thu</div>
+                  <div role="columnheader">Fri</div>
+                  <div role="columnheader">Sat</div>
+                </div>
+                <div class="cal-row" role="row">
+                  <div class="day muted" role="gridcell">27</div>
+                  <div class="day muted" role="gridcell">28</div>
+                  <div class="day muted" role="gridcell">29</div>
+                  <div class="day muted" role="gridcell">30</div>
+                  <div class="day muted" role="gridcell">31</div>
+                  <div class="day" role="gridcell">1</div>
+                  <div class="day" role="gridcell">2</div>
+                </div>
+                <div class="cal-row" role="row">
+                  <div class="day" role="gridcell">3</div>
+                  <div class="day" role="gridcell">4</div>
+                  <div class="day has-event" role="gridcell">5<a class="pill" href="event-welcome-week-fair.html" data-category="General">Fair</a></div>
+                  <div class="day has-event" role="gridcell">6<a class="pill" href="event-cultural-potluck.html" data-category="Cultural">Potluck</a></div>
+                  <div class="day" role="gridcell">7</div>
+                  <div class="day has-event" role="gridcell">8<a class="pill" href="event-robotics-workshop.html" data-category="Technology">Workshop</a></div>
+                  <div class="day has-event" role="gridcell">9<a class="pill" href="event-charity-drive.html" data-category="Service">Charity</a></div>
+                </div>
+                <div class="cal-row" role="row">
+                  <div class="day" role="gridcell">10</div>
+                  <div class="day" role="gridcell">11</div>
+                  <div class="day" role="gridcell">12</div>
+                  <div class="day" role="gridcell">13</div>
+                  <div class="day has-event" role="gridcell">14<a class="pill" href="event-meetup.html" data-category="General">Meet</a></div>
+                  <div class="day" role="gridcell">15</div>
+                  <div class="day" role="gridcell">16</div>
+                </div>
+                <div class="cal-row" role="row">
+                  <div class="day" role="gridcell">17</div>
+                  <div class="day" role="gridcell">18</div>
+                  <div class="day" role="gridcell">19</div>
+                  <div class="day has-event" role="gridcell">20<a class="pill" href="event-wis-mentor-panel.html" data-category="Academic">Mentor</a></div>
+                  <div class="day" role="gridcell">21</div>
+                  <div class="day has-event" role="gridcell">22<a class="pill" href="event-hack-night.html" data-category="Technology">Hack</a></div>
+                  <div class="day has-event" role="gridcell">23<a class="pill" href="event-dance-night.html" data-category="Arts">Dance</a></div>
+                </div>
+                <div class="cal-row" role="row">
+                  <div class="day has-event" role="gridcell">24<a class="pill" href="event-outdoor-rec-day-hike.html" data-category="Sports & Rec">Hike</a></div>
+                  <div class="day" role="gridcell">25</div>
+                  <div class="day" role="gridcell">26</div>
+                  <div class="day" role="gridcell">27</div>
+                  <div class="day" role="gridcell">28</div>
+                  <div class="day" role="gridcell">29</div>
+                  <div class="day" role="gridcell">30</div>
+                </div>
+              </div>
+              <p class="meta mt-8">See full <a href="calendar.html">Calendar</a></p>
+            </div>
+            <!-- My Events card displaying user's saved events - clickable to navigate to events page -->
+            <div class="card">
+              <h3 class="mt-0">My Events</h3>
+              <!-- Container for dynamically rendered event chips (populated by events.js) -->
+              <div id="myEventsBar"></div>
+              <p class="meta mt-8">Manage in <a href="events.html">Events</a></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Call-to-action section for event hosting -->
+      <section class="section section-alt">
+        <div class="container cta">
+          <h2>Hosting an event?</h2>
+          <p>Share your club events with the community.</p>
+          <a class="btn" href="events.html">See Events</a>
+        </div>
+      </section>
+    </main>
+
+    <!-- JavaScript files for page functionality -->
+    <script src="assets/js/layout.js"></script>
+    <script src="assets/js/main.js"></script> <!-- Mobile nav toggle and card click handlers -->
+    <script src="assets/js/events.js"></script> <!-- Event rendering and localStorage management -->
+  </body>
+  </html>
