@@ -1,0 +1,574 @@
+/*------------------------------------------------------------------------------
+ * COMP 3020 HCI - UMSU Clubs Website
+ * NAME: UMSU Clubs Website Stylesheet
+ * COURSE: Human-Computer Interaction
+ * AUTHORS: 
+ *   - Patrick Kotelko
+ *   - Harshvardhan Gadhavi
+ *   - Chimdi Iwuchukwu
+ *   - Gurwinder Khandal
+ *   - Seth Morris
+ * GROUP: Group-5
+ *------------------------------------------------------------------------------
+ *
+ * Description:
+ * Main stylesheet for the UMSU Clubs website. Contains all styling for the
+ * navigation, events, clubs, calendar, and general layout components.
+ *------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------
+ * CSS Custom Properties (Design Tokens)
+ * Defines global color scheme and design system variables used throughout
+ * the entire website. These can be easily modified to change the theme.
+ *------------------------------------------------------------------------------*/
+:root{
+  --bg:#0b0f1a;        /* page background */
+  --panel:#ffffff;     /* surfaces */
+  --text:#0f1222;      /* primary text */
+  --muted:#5a6175;     /* secondary text */
+  --brand:#574bff;     /* primary brand */
+  --brand-2:#1db6a6;   /* accent */
+  --ribbon:#0f1326;    /* ribbon background */
+  --ribbon-border:#1c2548;
+}
+
+/*------------------------------------------------------------------------------
+ * Base Reset and Typography
+ * Global CSS reset and default typography settings for consistent rendering
+ * across all browsers. Uses modern sans-serif font stack for readability.
+ *------------------------------------------------------------------------------*/
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);background:#f5f7fb;line-height:1.6}
+
+/*------------------------------------------------------------------------------
+ * Layout Utilities
+ * Container and section spacing classes for consistent page layout.
+ * Container centers content with max-width for readability.
+ *------------------------------------------------------------------------------*/
+.container{max-width:1200px;margin:0 auto;padding:0 16px}
+.section{background:#f5f7fb;padding:48px 0}
+.section-alt{background:#eef2ff}
+.hero{background:linear-gradient(120deg,#eef2ff, #e7f8f5)}
+.hero-inner{padding:64px 0}
+/*------------------------------------------------------------------------------
+ * Utility Helpers
+ * Reusable spacing and button helpers to avoid inline styles in markup.
+ *------------------------------------------------------------------------------*/
+.m-0{margin:0}
+.mt-0{margin-top:0}
+.mt-8{margin-top:8px}
+.btn-compact{padding:8px 12px;font-size:14px}
+/* Computational layout: clamp() function for responsive typography
+ * clamp(min, preferred, max) ensures font size scales between 28px and 40px
+ * based on viewport width (3vw), with 28px as minimum and 40px as maximum.
+ * This provides fluid typography that adapts to screen size without media queries.
+ */
+.hero h1{font-size:clamp(28px,3vw,40px);margin:0 0 8px}
+.hero p{margin:0 0 16px;color:var(--muted)}
+/* Computational layout: Flexbox for horizontal button arrangement
+ * display:flex creates a flex container that arranges children (buttons) horizontally.
+ * gap:12px provides consistent spacing between flex items without using margins.
+ * Flexbox automatically distributes space and aligns items in a single row.
+ */
+.actions{display:flex;gap:12px}
+
+/*------------------------------------------------------------------------------
+ * Ribbon Navigation Header
+ * Sticky top navigation bar with dark background. Remains visible while
+ * scrolling. Includes brand logo, navigation links, and mobile menu toggle.
+ * Uses flexbox for horizontal alignment.
+ *------------------------------------------------------------------------------*/
+.site-header.ribbon{background:var(--ribbon);border-bottom:1px solid var(--ribbon-border);color:#fff;position:sticky;top:0;z-index:20}
+/* Computational layout: Flexbox for header layout
+ * display:flex creates a flexible container that arranges brand, nav, and toggle horizontally.
+ * align-items:center vertically centers all flex items.
+ * gap:16px provides consistent spacing between flex items (brand, nav, toggle).
+ */
+.header-inner{display:flex;align-items:center;gap:16px;min-height:60px}
+/* Computational layout: Flexbox for brand logo and text alignment
+ * display:flex arranges logo image and brand text horizontally with gap:10px spacing.
+ */
+.brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-weight:700}
+.brand .logo{width:32px;height:32px}
+.brand-text{letter-spacing:.3px}
+
+/* Computational layout: Flexbox for navigation links
+ * display:flex arranges navigation links horizontally.
+ * margin-left:auto pushes the nav to the right edge of the header container.
+ * gap:6px provides spacing between navigation link items.
+ */
+.site-nav{display:flex;gap:6px;margin-left:auto}
+.site-nav a{color:#c8d1ff;text-decoration:none;padding:10px 12px;border-radius:8px;display:inline-block}
+.site-nav a[aria-current="page"],
+.site-nav a:hover{color:#fff;background:rgba(87,75,255,.15)}
+
+.nav-toggle{display:none;margin-left:auto;background:transparent;border:1px solid #31407b;color:#c8d1ff;border-radius:8px;padding:6px 10px}
+.sr-only{position:absolute;left:-9999px}
+.skip-link{position:absolute;left:-9999px}
+.skip-link:focus{left:16px;top:8px;background:#fff;padding:6px 10px;border-radius:6px}
+
+/*------------------------------------------------------------------------------
+ * Mobile Navigation Responsive Styles
+ * Navigation menu collapses on screens smaller than 760px. Menu becomes
+ * vertical dropdown accessible via hamburger toggle button.
+ *------------------------------------------------------------------------------*/
+@media (max-width: 760px){
+  .site-nav{display:none;position:absolute;left:0;right:0;top:60px;background:var(--ribbon);border-bottom:1px solid var(--ribbon-border);padding:8px}
+  .site-nav.open{display:flex;flex-direction:column}
+  .nav-toggle{display:inline-block}
+}
+
+/*------------------------------------------------------------------------------
+ * UI Component Library
+ * Reusable button, card, and grid components for consistent interface design.
+ * Cards use subtle shadows and rounded corners for modern appearance.
+ * Grid system uses CSS Grid with auto-fill for responsive layouts.
+ *------------------------------------------------------------------------------*/
+.btn{border:1px solid #d4daf3;color:var(--text);background:#fff;border-radius:10px;padding:10px 14px;text-decoration:none;transition:background-color 0.2s, border-color 0.2s, box-shadow 0.2s}
+.btn:hover{background:#f8f9ff;border-color:#b8c0f0;box-shadow:0 2px 4px rgba(0,0,0,0.08)}
+.btn:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+.btn-primary{background:var(--brand);border-color:var(--brand);color:#fff;transition:background-color 0.2s, border-color 0.2s, box-shadow 0.2s}
+.btn-primary:hover{background:#4a3fe8;border-color:#4a3fe8;box-shadow:0 2px 8px rgba(87,75,255,0.3)}
+.btn-primary:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+.event-add-btn,.event-remove-btn{box-shadow:0 2px 4px rgba(0,0,0,0.1)}
+.event-add-btn:disabled{background:#e0e0e0;border-color:#d0d0d0;color:#999;cursor:not-allowed}
+
+/* Computational layout: CSS Grid base container
+ * display:grid creates a grid container for layout control.
+ * gap:16px provides consistent spacing between grid items.
+ */
+.grid{display:grid;gap:16px}
+/* Computational layout: repeat() with auto-fill and minmax() for responsive grid
+ * repeat(auto-fill, minmax(240px, 1fr)) creates a responsive grid that:
+ * - auto-fill: Automatically creates as many columns as can fit in the container
+ * - minmax(240px, 1fr): Each column is minimum 240px wide, but can grow to fill
+ *   available space using fractional units (1fr = one fraction of remaining space)
+ * This creates a fluid, responsive card grid that adapts to any screen size.
+ */
+.grid.cards{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+.card{background:var(--panel);border:1px solid #e6e9f6;border-radius:14px;padding:16px;box-shadow:0 1px 0 rgba(16,24,40,.04);transition:filter 0.2s, border-color 0.2s}
+.card h3{margin:0 0 6px}
+.card .meta{color:var(--muted);font-size:14px}
+.card-link{display:inline-block;margin-top:6px;color:var(--brand)}
+
+/*------------------------------------------------------------------------------
+ * Club Category Color Scheme
+ * Each club category has a distinct background and border color matching
+ * the calendar event color scheme. All clubs show category colors (not just on hover).
+ * Hover states darken/deepen the color uniformly using filter brightness.
+ * Applied via data-category attribute.
+ * Colors: Arts (pink), Technology (blue), Sports & Rec (green), General (yellow),
+ * Cultural (orange), Service (purple), Academic (light blue).
+ *------------------------------------------------------------------------------*/
+.card[data-category="Arts"]{background:#ffeef4;border-color:#ffb3c7}
+.card[data-category="Technology"]{background:#eef7ff;border-color:#c5e1ff}
+.card[data-category="Sports & Rec"]{background:#f0fdf4;border-color:#c7f5d9}
+.card[data-category="General"]{background:#fffcf0;border-color:#ffe7a3}
+.card[data-category="Cultural"]{background:#fff9f0;border-color:#ffd5a8}
+.card[data-category="Service"]{background:#f8f5ff;border-color:#dcd0ff}
+.card[data-category="Academic"]{background:#f0f7ff;border-color:#e6f0ff}
+.card[data-category="Arts"]:hover,
+.card[data-category="Technology"]:hover,
+.card[data-category="Sports & Rec"]:hover,
+.card[data-category="General"]:hover,
+.card[data-category="Cultural"]:hover,
+.card[data-category="Service"]:hover,
+.card[data-category="Academic"]:hover{filter:brightness(0.92)}
+
+/*------------------------------------------------------------------------------
+ * Club Icon Styling
+ * Inline emoji icons displayed before club names for visual identification.
+ *------------------------------------------------------------------------------*/
+.club-icon{display:inline-block;margin-right:8px;font-size:1.15em;line-height:1}
+
+/*------------------------------------------------------------------------------
+ * Filter Interface
+ * Form controls for searching and filtering events/clubs by category, club,
+ * date range, etc. Uses flexbox for responsive horizontal layout.
+ *------------------------------------------------------------------------------*/
+/* Computational layout: Flexbox for filter form layout
+ * display:flex arranges filter inputs horizontally with gap:12px spacing.
+ * flex-wrap:wrap allows filters to wrap to new lines on smaller screens.
+ */
+.filters{display:flex;gap:12px;flex-wrap:wrap;margin:10px 0 20px}
+/* Computational layout: Flexbox for vertical form field layout
+ * display:flex with flex-direction:column stacks label and input vertically.
+ * gap:6px provides spacing between label and input field.
+ */
+.filters label{display:flex;flex-direction:column;gap:6px;font-size:14px}
+.filters input,.filters select{padding:10px 12px;border:1px solid #d4daf3;border-radius:10px;min-width:260px}
+/* Computational layout: Flexbox for date filter row
+ * display:flex arranges date inputs horizontally within full-width container.
+ * flex-wrap:wrap allows date inputs to stack vertically on mobile screens.
+ */
+.filters-row-2{width:100%;display:flex;gap:12px;flex-wrap:wrap}
+.label{color:var(--muted)}
+
+/*------------------------------------------------------------------------------
+ * Event List Layout
+ * Grid-based layout for displaying events in a list. Each event card has
+ * hover effects and consistent spacing. Events are displayed in a single column.
+ *------------------------------------------------------------------------------*/
+/* Computational layout: CSS Grid for single-column event list
+ * display:grid creates a grid container that stacks events vertically in one column.
+ * gap:12px provides consistent spacing between event items.
+ */
+.list.events{display:grid;gap:12px}
+.event{background:#fff;border:2px solid #e6e9f6;border-radius:12px;padding:14px;transition:background-color 0.2s, filter 0.2s, border-color 0.2s}
+.event:hover{filter:brightness(0.92)}
+.event .meta{color:var(--muted);font-size:14px}
+
+/*------------------------------------------------------------------------------
+ * Event Content Layout with Icons
+ * Three-column flexbox layout: tearaway calendar icon (left), event content
+ * (middle, flexible), club icon (right). Ensures consistent alignment.
+ *------------------------------------------------------------------------------*/
+/* Computational layout: Flexbox for three-column event content layout
+ * display:flex arranges tearaway calendar, content, and club icon horizontally.
+ * align-items:center vertically centers all three components.
+ * gap:16px provides spacing between calendar, content, and icon.
+ */
+.event-content-wrapper{display:flex;align-items:center;gap:16px}
+/* Computational layout: Flexbox flexible sizing
+ * flex:1 makes the middle content area grow to fill available space.
+ * min-width:0 allows flex item to shrink below its content size if needed.
+ */
+.event-middle-content{flex:1;min-width:0}
+.event-middle-content h3{margin:0 0 6px}
+.event-middle-content p{margin:4px 0}
+/* Computational layout: Flexbox for icon centering
+ * display:flex with align-items:center and justify-content:center centers the emoji icon
+ * both horizontally and vertically within the fixed 48x48px container.
+ * flex-shrink:0 prevents the icon from shrinking in the flex layout.
+ */
+.event-club-icon{font-size:32px;line-height:1;flex-shrink:0;display:flex;align-items:center;justify-content:center;width:48px;height:48px;opacity:0.8;border-radius:8px;border:2px solid #e6e9f6;transition:border-color 0.2s}
+
+/*------------------------------------------------------------------------------
+ * Tearaway Calendar Component
+ * Custom calendar display showing event dates with torn paper effect at top.
+ * Displays month abbreviation and day number. Uses CSS clip-path for torn edge.
+ * Red tear-off strip simulates physical calendar page. Used in event listings.
+ *------------------------------------------------------------------------------*/
+.tearaway-calendar{flex-shrink:0;position:relative;width:70px;height:80px;background:#fff;border:2px solid #e6e9f6;border-radius:0 0 6px 6px;box-shadow:0 2px 8px rgba(0,0,0,0.1);overflow:visible}
+.calendar-tear-top{position:absolute;top:-12px;left:-2px;right:-2px;height:14px;background:#ff4444;border:2px solid #e6e9f6;border-bottom:none;border-radius:6px 6px 0 0;overflow:hidden}
+.calendar-tear-top::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background-image:radial-gradient(circle at 50% 50%, #ff6666 1px, transparent 1px),radial-gradient(circle at 50% 50%, transparent 2px, #ff4444 2px, #ff4444 3px, transparent 3px);background-size:6px 6px,12px 12px;background-position:0 0,3px 3px;opacity:0.8}
+.calendar-tear-top::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:#ff4444;clip-path:polygon(0% 0%,10% 100%,20% 0%,30% 100%,40% 0%,50% 100%,60% 0%,70% 100%,80% 0%,90% 100%,100% 0%)}
+/* Computational layout: Flexbox for calendar content centering
+ * display:flex with flex-direction:column stacks month and day vertically.
+ * align-items:center and justify-content:center center content both horizontally and vertically.
+ */
+.calendar-body{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;padding-top:2px;padding-bottom:8px}
+.calendar-month{font-size:10px;font-weight:700;text-transform:uppercase;color:#666;letter-spacing:0.5px;margin-bottom:4px}
+.calendar-day{font-size:32px;font-weight:700;color:#0f1222;line-height:1}
+
+/*------------------------------------------------------------------------------
+ * Mobile Responsive: Events and Calendar
+ * On screens smaller than 600px, reduces calendar size and spacing for
+ * better mobile usability. Smaller icons and tighter gaps.
+ *------------------------------------------------------------------------------*/
+@media (max-width: 600px){
+  .event-content-wrapper{gap:12px}
+  .tearaway-calendar{width:60px;height:70px}
+  .calendar-day{font-size:28px}
+  .calendar-month{font-size:9px}
+  .event-club-icon{font-size:24px;width:40px;height:40px}
+}
+
+/*------------------------------------------------------------------------------
+ * Event Category Background Colors
+ * Each event category has distinct background and border colors applied
+ * via class names. All events have visible category colors (not just on hover).
+ * Hover states darken/deepen the color uniformly using filter brightness.
+ * Colors match calendar pill colors for consistency.
+ *------------------------------------------------------------------------------*/
+.event.event-cat-arts{background:#ffeef4;border-color:#ffb3c7;border-width:2px}
+.event.event-cat-technology{background:#eef7ff;border-color:#c5e1ff;border-width:2px}
+.event.event-cat-sports{background:#f0fdf4;border-color:#c7f5d9;border-width:2px}
+.event.event-cat-general{background:#fffcf0;border-color:#ffe7a3;border-width:2px}
+.event.event-cat-cultural{background:#fff9f0;border-color:#ffd5a8;border-width:2px}
+.event.event-cat-service{background:#f8f5ff;border-color:#dcd0ff;border-width:2px}
+.event.event-cat-academic{background:#f0f7ff;border-color:#e6f0ff;border-width:2px}
+/* Event link colors match category colors for visual consistency */
+.event.event-cat-arts a{color:#c41e5c}
+.event.event-cat-technology a{color:#0088cc}
+.event.event-cat-sports a{color:#0d6b28}
+.event.event-cat-general a{color:#b8860b}
+.event.event-cat-cultural a{color:#cc6600}
+.event.event-cat-service a{color:#6b3db3}
+.event.event-cat-academic a{color:#1a3a66}
+/* Event link hover states - darker shade for better visibility */
+.event.event-cat-arts a:hover{color:#a01545}
+.event.event-cat-technology a:hover{color:#006699}
+.event.event-cat-sports a:hover{color:#0a521f}
+.event.event-cat-general a:hover{color:#966f09}
+.event.event-cat-cultural a:hover{color:#a65200}
+.event.event-cat-service a:hover{color:#552891}
+.event.event-cat-academic a:hover{color:#0f2544}
+.event.event-cat-arts:hover{filter:brightness(0.92)}
+.event.event-cat-technology:hover{filter:brightness(0.92)}
+.event.event-cat-sports:hover{filter:brightness(0.92)}
+.event.event-cat-general:hover{filter:brightness(0.92)}
+.event.event-cat-cultural:hover{filter:brightness(0.92)}
+.event.event-cat-service:hover{filter:brightness(0.92)}
+.event.event-cat-academic:hover{filter:brightness(0.92)}
+/* Club icon borders match event category colors */
+.event.event-cat-arts .event-club-icon{border-color:#ffb3c7}
+.event.event-cat-technology .event-club-icon{border-color:#c5e1ff}
+.event.event-cat-sports .event-club-icon{border-color:#c7f5d9}
+.event.event-cat-general .event-club-icon{border-color:#ffe7a3}
+.event.event-cat-cultural .event-club-icon{border-color:#ffd5a8}
+.event.event-cat-service .event-club-icon{border-color:#dcd0ff}
+.event.event-cat-academic .event-club-icon{border-color:#e6f0ff}
+
+/*------------------------------------------------------------------------------
+ * Event Detail Page Layout
+ * Two-column grid layout for individual event pages. Left column shows
+ * main content, right column shows media/graphics. Responsive: stacks
+ * vertically on smaller screens (820px breakpoint).
+ *------------------------------------------------------------------------------*/
+/* Computational layout: Fractional units (fr) for proportional column sizing
+ * grid-template-columns: 1.6fr 1fr creates two columns with proportional widths.
+ * The left column (1.6fr) is 1.6 times wider than the right column (1fr).
+ * This creates a 62.5% / 37.5% split (1.6:1 ratio) that adapts to any container width.
+ */
+.event-detail{display:grid;grid-template-columns:1.6fr 1fr;gap:20px;align-items:start}
+.event-main .meta{color:var(--muted)}
+/* Computational layout: Flexbox for button group layout
+ * display:flex arranges action buttons horizontally with gap:10px spacing.
+ * flex-wrap:wrap allows buttons to wrap to new lines if needed.
+ */
+.event-actions{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+/*------------------------------------------------------------------------------
+ * Navigation Buttons
+ * Container for back navigation buttons on event detail pages.
+ * Uses flexbox for horizontal layout with wrapping on smaller screens.
+ *------------------------------------------------------------------------------*/
+.nav-buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.event-media{position:relative}
+/* Computational layout: Flexbox for graphic content centering
+ * display:flex with align-items:center and justify-content:center centers the emoji
+ * both horizontally and vertically within the graphic container.
+ */
+.event-graphic{border:2px solid #e6e9f6;border-radius:14px;min-height:220px;background:linear-gradient(135deg,#eef2ff,#e7f8f5);display:flex;align-items:center;justify-content:center;font-size:48px;transition:transform 0.2s, box-shadow 0.2s, border-color 0.2s}
+.event-graphic span{background:#0f1326;color:#fff;border-radius:10px;padding:6px 10px;font-weight:700;box-shadow:0 2px 10px rgba(0,0,0,.08)}
+.event-graphic:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.12)}
+.event-graphic:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+/* Event detail category borders - match event listing page colors */
+.event-detail.event-cat-arts{border-color:#ffb3c7;border-width:2px}
+.event-detail.event-cat-technology{border-color:#c5e1ff;border-width:2px}
+.event-detail.event-cat-sports{border-color:#c7f5d9;border-width:2px}
+.event-detail.event-cat-general{border-color:#ffe7a3;border-width:2px}
+.event-detail.event-cat-cultural{border-color:#ffd5a8;border-width:2px}
+.event-detail.event-cat-service{border-color:#dcd0ff;border-width:2px}
+.event-detail.event-cat-academic{border-color:#e6f0ff;border-width:2px}
+/* Event graphic borders match event detail category */
+.event-detail.event-cat-arts .event-graphic{border-color:#ffb3c7}
+.event-detail.event-cat-technology .event-graphic{border-color:#c5e1ff}
+.event-detail.event-cat-sports .event-graphic{border-color:#c7f5d9}
+.event-detail.event-cat-general .event-graphic{border-color:#ffe7a3}
+.event-detail.event-cat-cultural .event-graphic{border-color:#ffd5a8}
+.event-detail.event-cat-service .event-graphic{border-color:#dcd0ff}
+.event-detail.event-cat-academic .event-graphic{border-color:#e6f0ff}
+.notice{background:#e7f8f5;border:1px solid #c7efe9;color:#0b3d39;border-radius:10px;padding:8px 10px;font-size:14px}
+
+@media (max-width: 820px){
+  .event-detail{grid-template-columns:1fr}
+}
+
+/*------------------------------------------------------------------------------
+ * Calendar Month Navigation
+ * Header controls for navigating between calendar months. Includes
+ * Previous/Next buttons (currently non-functional) and current month display.
+ * Layout switches to vertical stack on mobile (760px breakpoint).
+ *------------------------------------------------------------------------------*/
+/* Computational layout: Flexbox for calendar navigation layout
+ * display:flex with justify-content:space-between positions month label and controls at opposite ends.
+ * align-items:center vertically centers all navigation elements.
+ */
+.calendar-nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+/* Computational layout: Flexbox for navigation button group
+ * display:flex arranges Previous/Next buttons horizontally with gap:8px spacing.
+ */
+.calendar-nav-controls{display:flex;gap:8px;align-items:center}
+.calendar-nav-month{font-weight:600;min-width:140px;text-align:center}
+
+@media (max-width: 760px){
+  .calendar-nav{flex-direction:column;gap:12px;align-items:flex-start}
+  .calendar-nav-controls{width:100%;justify-content:space-between}
+}
+
+/*------------------------------------------------------------------------------
+ * Calendar Grid Layout
+ * 7-column grid representing days of the week. Each day cell can contain
+ * event pills. Muted styling for days outside current month. Event pills
+ * positioned absolutely at bottom of day cells.
+ *------------------------------------------------------------------------------*/
+/* Computational layout: CSS Grid for calendar container
+ * display:grid creates a grid container for the calendar layout.
+ * gap:8px provides spacing between calendar day cells.
+ */
+.calendar-grid{display:grid;gap:8px}
+/* Computational layout: repeat() with fractional units (fr) for equal column distribution
+ * repeat(7, 1fr) creates 7 equal-width columns using fractional units.
+ * Each column gets 1fr (one fraction), meaning all 7 columns share available space equally.
+ * This ensures calendar days of the week are evenly distributed regardless of container width.
+ */
+.cal-head,.cal-row{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+.cal-head div{color:var(--muted);font-weight:600;text-transform:uppercase;font-size:12px}
+.day{background:#fff;border:1px solid #e6e9f6;border-radius:10px;min-height:88px;padding:8px;position:relative}
+.day.muted{background:#f3f5ff;color:#9aa3c1}
+.day.has-event .pill{position:absolute;bottom:8px;left:8px;color:#062b2a;font-weight:600;font-size:12px;padding:4px 8px;border-radius:999px;text-decoration:none;display:inline-block}
+.pill{background:var(--brand-2)}
+.day.has-event .pill:hover{filter:brightness(0.95)}
+.day.has-event .pill:focus-visible{outline:2px solid #0f1326;outline-offset:2px}
+.day.has-event .pill.mine{box-shadow:0 0 0 2px #000 inset}
+
+/*------------------------------------------------------------------------------
+ * Calendar Event Pill Category Colors
+ * Color-coded pills for events on calendar grid. Each category has distinct
+ * background and text color for quick visual identification. Colors match
+ * event card backgrounds. "mine" class highlights user's saved events.
+ *------------------------------------------------------------------------------*/
+.pill.cat-arts{background:#ffb3c7;color:#4a1126}
+.pill.cat-technology{background:#c5e1ff;color:#0b2a52}
+.pill.cat-sports{background:#c7f5d9;color:#0b3d1f}
+.pill.cat-general{background:#ffe7a3;color:#4a3a00}
+.pill.cat-cultural{background:#ffd5a8;color:#4a2d0a}
+.pill.cat-service{background:#dcd0ff;color:#2e1b5a}
+.pill.cat-academic{background:#e6f0ff;color:#0e2347}
+
+/*------------------------------------------------------------------------------
+ * Calendar Category Legend
+ * Visual reference showing category colors with swatches. Helps users
+ * understand color coding system. Displayed above calendar grid.
+ *------------------------------------------------------------------------------*/
+/* Computational layout: Flexbox for category legend layout
+ * display:flex arranges legend items horizontally with gap:10px spacing.
+ * flex-wrap:wrap allows legend items to wrap to new lines on smaller screens.
+ */
+.legend{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0 16px;padding:0;list-style:none}
+/* Computational layout: Flexbox for legend item alignment
+ * display:inline-flex arranges swatch and label horizontally with gap:8px spacing.
+ */
+.legend .key{display:inline-flex;align-items:center;gap:8px}
+.legend .swatch{width:14px;height:14px;border-radius:4px;border:1px solid #d0d6ee}
+.swatch-arts{background:#ffb3c7}
+.swatch-technology{background:#c5e1ff}
+.swatch-sports{background:#c7f5d9}
+.swatch-general{background:#ffe7a3}
+.swatch-academic{background:#e6f0ff}
+.swatch-cultural{background:#ffd5a8}
+.swatch-service{background:#dcd0ff}
+
+/*------------------------------------------------------------------------------
+ * Site Footer
+ * Dark footer matching ribbon header. Contains site branding, tagline,
+ * navigation links, and group information. Sticky positioning not applied.
+ *------------------------------------------------------------------------------*/
+.site-footer{background:#0b0f1a;color:#cbd5ff;margin-top:32px;border-top:1px solid #101833}
+/* Computational layout: Flexbox for footer layout
+ * display:flex arranges footer content and links horizontally.
+ * justify-content:space-between positions content at opposite ends.
+ * gap:16px provides spacing between footer sections.
+ */
+.footer-inner{display:flex;justify-content:space-between;gap:16px;padding:22px 0;align-items:center}
+.footer-links a{color:#cbd5ff;text-decoration:none;margin-right:12px}
+.footer-links a:hover{color:#fff}
+.footer-group{margin-top:8px;font-size:12px}
+.about-group{margin-top:24px}
+
+/*------------------------------------------------------------------------------
+ * Home Page Overview Layout
+ * Two-column grid on home page: mini calendar (left) and My Events (right).
+ * My Events column is wider to accommodate horizontal event chips without scrolling.
+ * Responsive: stacks vertically on screens smaller than 960px.
+ *------------------------------------------------------------------------------*/
+/* Computational layout: Fractional units (fr) for proportional two-column layout
+ * grid-template-columns: 3fr 2fr creates two columns with a 3:2 width ratio.
+ * The left column (3fr) takes 60% of available space, right column (2fr) takes 40%.
+ * This creates a responsive layout where proportions are maintained at all screen sizes.
+ */
+.home-overview{display:grid;grid-template-columns:3fr 2fr;gap:20px}
+@media (max-width: 960px){.home-overview{grid-template-columns:1fr}}
+
+/*------------------------------------------------------------------------------
+ * Mini Calendar Styling
+ * Compact calendar version for home page overview. Smaller cells and
+ * reduced padding compared to full calendar. Maintains same grid structure.
+ *------------------------------------------------------------------------------*/
+.mini-calendar .cal-head div{font-size:11px}
+.mini-calendar .day{min-height:120px;padding:10px;overflow:hidden;position:relative}
+.mini-calendar .day.has-event .pill{bottom:8px;left:8px;font-size:12px;padding:4px 9px}
+.mini-calendar .calendar-grid{gap:6px}
+.mini-calendar .cal-head,.mini-calendar .cal-row{gap:6px}
+
+/* Full-bleed to screen edges */
+/* Computational layout: calc() function for calculated positioning
+ * calc(-50vw + 50%) calculates negative viewport width plus container offset
+ * to break out of container constraints and extend element to full viewport width.
+ * This creates a full-bleed effect where content spans edge-to-edge across the screen.
+ */
+.full-bleed{position:relative;left:50%;right:50%;margin-left:calc(-50vw + 50%);margin-right:calc(-50vw + 50%);width:100vw;border-radius:0}
+@media (max-width: 960px){.mini-calendar .day{min-height:90px;padding:8px}}
+
+/*------------------------------------------------------------------------------
+ * My Events Stack Layout
+ * Vertical list of saved events on home page. Each event displayed as
+ * a chip component. Used in "My Events" sidebar on homepage.
+ *------------------------------------------------------------------------------*/
+/* Computational layout: Flexbox for vertical event stack
+ * display:flex with flex-direction:column stacks event chips vertically.
+ * gap:10px provides consistent spacing between stacked items.
+ */
+.events-stack{display:flex;flex-direction:column;gap:10px}
+.events-stack .event-chip{width:100%}
+
+/*------------------------------------------------------------------------------
+ * My Events Vertical Stack
+ * Vertical container for event chips on main page. Chips stack vertically
+ * to fit within the sidebar container. Used for compact event display.
+ *------------------------------------------------------------------------------*/
+/* Computational layout: Flexbox for vertical event bar
+ * display:flex with flex-direction:column stacks event chips vertically.
+ * gap:10px provides consistent spacing between stacked items.
+ */
+.events-bar{display:flex;flex-direction:column;gap:10px}
+/* Computational layout: Flexbox for event chip vertical layout
+ * display:flex with flex-direction:column stacks chip content vertically.
+ * This creates a compact vertical layout for event chips in the sidebar.
+ */
+.event-chip{display:flex;flex-direction:column;padding:10px;border:1px solid #e6e9f6;border-radius:12px;background:#fff;width:100%;transition:filter 0.2s}
+.event-chip .event-content-wrapper{width:100%;flex:1}
+.event-chip .event-middle-content h3,
+.event-chip .event-middle-content > div:first-child{margin:0 0 6px;line-height:1.3}
+.event-chip .event-middle-content .meta{margin:4px 0;color:var(--muted);font-size:12px;line-height:1.4}
+.event-chip .tearaway-calendar{flex-shrink:0;width:50px;height:60px}
+.event-chip .calendar-day{font-size:24px}
+.event-chip .calendar-month{font-size:9px}
+.event-chip .event-club-icon{flex-shrink:0;font-size:24px;width:36px;height:36px}
+.event-chip .event-content-wrapper{gap:10px}
+.event-chip a{color:var(--brand);text-decoration:none;font-weight:600;display:inline-block}
+.event-chip .meta{color:var(--muted);font-size:12px}
+
+/*------------------------------------------------------------------------------
+ * Event Chip Category Colors
+ * Category-based coloring for event chips in "My Events" sections.
+ * All chips show category colors (not just on hover). Hover states darken/deepen
+ * the color uniformly using filter brightness. Colors match main event cards
+ * for visual consistency across the site.
+ *------------------------------------------------------------------------------*/
+.event-chip.chip-cat-arts{background:#ffeef4;border-color:#ffb3c7}
+.event-chip.chip-cat-technology{background:#eef7ff;border-color:#c5e1ff}
+.event-chip.chip-cat-sports{background:#f0fdf4;border-color:#c7f5d9}
+.event-chip.chip-cat-general{background:#fffcf0;border-color:#ffe7a3}
+.event-chip.chip-cat-cultural{background:#fff9f0;border-color:#ffd5a8}
+.event-chip.chip-cat-service{background:#f8f5ff;border-color:#dcd0ff}
+.event-chip.chip-cat-academic{background:#f0f7ff;border-color:#e6f0ff}
+.event-chip.chip-cat-arts:hover,
+.event-chip.chip-cat-technology:hover,
+.event-chip.chip-cat-sports:hover,
+.event-chip.chip-cat-general:hover,
+.event-chip.chip-cat-cultural:hover,
+.event-chip.chip-cat-service:hover,
+.event-chip.chip-cat-academic:hover{filter:brightness(0.92)}
